@@ -3,6 +3,10 @@
 		{
 			"name": "k16w.e8266",
 			"path": "k16w.e8266"
+		},
+		{
+			"name": "e82fr",
+			"path": "e82fr"
 		}
 	]
 }
