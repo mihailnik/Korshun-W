@@ -11,6 +11,14 @@
 		{
 			"name": "gyv",
 			"path": "gyv"
+		},
+		{
+			"name": "e8266rtos",
+			"path": "e8266rtos"
+		},
+		{
+			"name": "avr",
+			"path": "avr"
 		}
 	]
 }
