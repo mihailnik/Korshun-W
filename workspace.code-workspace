@@ -1,24 +1,8 @@
 {
 	"folders": [
 		{
-			"name": "k16w.e8266",
-			"path": "k16w.e8266"
-		},
-		{
-			"name": "embuirtos.e32",
-			"path": "embuirtos.e32"
-		},
-		{
 			"name": "gyv",
 			"path": "gyv"
-		},
-		{
-			"name": "e8266rtos",
-			"path": "e8266rtos"
-		},
-		{
-			"name": "avr",
-			"path": "avr"
 		}
 	]
 }

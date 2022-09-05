@@ -1,12 +1,14 @@
 #include <Arduino.h>
-
+// #define WIFI_AP_MODE 1
+#define WIFI_STA_MODE 1
+#define LED 22
 TaskHandle_t blink;
 
 // пример использования "блоков" для оформления
 // данные храним, но никак не используем, это просто пример
 
-#define AP_SSID ""
-#define AP_PASS ""
+#define AP_SSID "Kozaki_WiFi" //
+#define AP_PASS "0676181665"  //
 
 #include <GyverPortal.h>
 GyverPortal portal;
@@ -58,8 +60,7 @@ void build() {
 }
 
 void setup() {
-xTaskCreate
-
+#ifdef WIFI_STA_MODE
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
   WiFi.begin(AP_SSID, AP_PASS);
@@ -68,6 +69,12 @@ xTaskCreate
     Serial.print(".");
   }
   Serial.println(WiFi.localIP());
+#endif
+#ifdef WIFI_AP_MODE
+WiFi.mode(WIFI_AP);
+WiFi.softAP("Korshun_16w","12345678"); // password cannot be shorter than 8 characters
+#endif
+
 
   portal.attachBuild(build);
   portal.start();
