@@ -1,5 +1,5 @@
 #include <Arduino.h>
-
+#include <avr/io.h>
 #include <Arduino_FreeRTOS.h>
 
 // define two tasks for Blink & AnalogRead
