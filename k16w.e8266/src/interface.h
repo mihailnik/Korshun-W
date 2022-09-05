@@ -13,7 +13,7 @@ void setVoice(Interface *interf, JsonObject *data);
 void setTimer(Interface *interf, JsonObject *data);
 void sensorPublisher();
 void action_miblink(Interface *interf, JsonObject *data);
-void blinker();
+void ft_LedBlink();
 
 //void remote_action(RA action, ...);
 //uint8_t uploadProgress(size_t len, size_t total);

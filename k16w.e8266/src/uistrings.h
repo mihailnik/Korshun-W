@@ -13,6 +13,7 @@ static const char V_VAR2[] PROGMEM = "v2";
 static const char V_UPDRATE[] PROGMEM = "updrt";    // update rate
 static const char V_UPDVOL[] PROGMEM = "updvolume";    // update volume
 static const char V_UPDVOICE[] PROGMEM = "updvoice";    // update voice
+static const char V_UPDTIMER[] PROGMEM = "updtimer";    // update voice
 
 // UI blocks
 static const char T_DEMO[] PROGMEM = "dem";     // генерация UI-секции "демо"

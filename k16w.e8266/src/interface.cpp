@@ -24,7 +24,7 @@ extern Scheduler ts;
 // Periodic task that runs every 5 sec and calls sensor publishing method
 Task tDisplayUpdater(5 * TASK_SECOND, TASK_FOREVER, &sensorPublisher, &ts, true );
 //M обновление переключателя голосов, пауз и громкости
-Task tLedBlink((u16_t)100, TASK_FOREVER, &blinker, &ts, true );
+Task t_LedBlink((u16_t)3000, TASK_FOREVER, &ft_LedBlink, &ts, true );
 
 /**
  * переопределяем метод из фреймворка, регистрирующий необходимы нам в проекте переменные и методы обработки
@@ -48,6 +48,10 @@ void create_parameters(){
      * регистрируем свои переменные
      */
     embui.var_create(FPSTR(V_LED), "1");    // LED default status is on
+    embui.var_create(FPSTR(V_BLINK_LED), "1");    // LED default status is on
+    embui.var_create(FPSTR(V_UPDVOL), "10");    // LED default status is on
+    embui.var_create(FPSTR(V_UPDVOICE), "1");    // LED default status is on
+    embui.var_create(FPSTR(V_UPDTIMER), "2");    // LED default status is on
 
     /**
      * добавляем свои обрабочки на вывод UI-секций
@@ -166,7 +170,7 @@ void action_blink(Interface *interf, JsonObject *data){
   SETPARAM(FPSTR(V_LED));  // save new LED state to the config
 
   // set LED state to the new checkbox state
-  digitalWrite(LED_BUILTIN, !(*data)[FPSTR(V_LED)].as<unsigned int>()); // write inversed signal for builtin LED
+//  digitalWrite(LED_BUILTIN, !(*data)[FPSTR(V_LED)].as<unsigned int>()); // write inversed signal for builtin LED
 
   Serial.printf("LED: %d\n", (*data)[FPSTR(V_LED)].as<unsigned int>());
 }
@@ -248,12 +252,21 @@ void block_mipage(Interface *interf, JsonObject *data){
 }
 
 // Задача
-void blinker(){
+void ft_LedBlink(){
   static u16_t ledState = LOW;
   ledState = !ledState;
-  // set LED state to the new checkbox state
-  digitalWrite(LED_BUILTIN, ledState); // write inversed signal for builtin LED
-  tLedBlink.delay(1000);
+  
+      //Выключить стек Wi-Fi:
+      // WiFi.mode(WIFI_OFF);
+      digitalWrite(LED_BUILTIN, HIGH); // write inversed signal for builtin LED
+
+      t_LedBlink.delay(1000);
+
+      // Включить стек Wi-Fi в режиме клиента:
+      //  WiFi.mode(WIFI_AP);
+      digitalWrite(LED_BUILTIN, LOW); // write inversed signal for builtin LED
+  
+      t_LedBlink.delay(1000);
 }
 
 /**
@@ -288,14 +301,17 @@ void action_miblink(Interface *interf, JsonObject *data){
   // set LED state to the new checkbox state
   if ((*data)[FPSTR(V_BLINK_LED)].as<unsigned int>())
   {
-    tLedBlink.disable();
+  //  t_LedBlink.disable();
   }
   else{
-    tLedBlink.enable();
+  //  t_LedBlink.enable();
 
   }
-}Конец проверить потребление и работоспособность при выключеном вайфай, и восстановление связи после:
-Выключить стек Wi-Fi:
-WiFi.mode(WIFI_OFF);
-Включить стек Wi-Fi в режиме клиента:
-WiFi.mode(WIFI_STA);
+}
+
+
+// Конец проверить потребление и работоспособность при выключеном вайфай, и восстановление связи после:
+// Выключить стек Wi-Fi:
+// WiFi.mode(WIFI_OFF);
+// Включить стек Wi-Fi в режиме клиента:
+// WiFi.mode(WIFI_STA);
