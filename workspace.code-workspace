@@ -3,6 +3,15 @@
 		{
 			"name": "gyv",
 			"path": "gyv"
+		},
+		{
+			"name": "embuirtos.e32",
+			"path": "embuirtos.e32"
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"string": "cpp"
+		}
+	}
 }

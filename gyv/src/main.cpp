@@ -13,6 +13,14 @@ TaskHandle_t blink;
 #include <GyverPortal.h>
 GyverPortal portal;
 
+
+  int Volume = 10;
+  char cTimer[7] = "";
+  char cVoice[7] = "";
+  char cLight[7] = "";
+  bool state;
+
+
 struct SomeData {
   char ssid[32] = "";
   char pass[32] = "";
@@ -26,7 +34,7 @@ SomeData data;
 void build() {
   BUILD_BEGIN();
   GP.THEME(GP_DARK);
-  GP.AJAX_UPDATE("led, st");
+  GP.AJAX_UPDATE("lbl_vol_val");
 
   GP.LABEL("Settings");
   GP.BLOCK_BEGIN();
@@ -37,26 +45,24 @@ void build() {
   GP.LABEL("OK");
   GP.BLOCK_END();
 
-  GP.FORM_BEGIN("/save");
-
-  GP.LABEL("WiFi");
   GP.BLOCK_BEGIN();
-  GP.TEXT("ssid", "SSID", data.ssid);
+  GP.LABEL("Volume: ");
+  GP.LABEL("NAN", "lbl_vol_val");
   GP.BREAK();
-  GP.TEXT("pass", "Password", data.pass);
+  GP.SLIDER("sld_vol", Volume, 0, 16, 1);
   GP.BLOCK_END();
-
-  GP.LABEL("MQTT");
-  GP.BLOCK_BEGIN();
-  GP.TEXT("host", "Host", data.host);
-  GP.BREAK();
-  GP.NUMBER("port", "Port", data.port);
-  GP.BLOCK_END();
-
-  GP.SUBMIT("Save");
-  GP.FORM_END();
 
   BUILD_END();
+}
+
+void action(){
+    if (portal.click("sld_vol")) {
+      Volume = portal.getInt("sld_vol");
+      }
+    if(portal.update("lbl_vol_val")){
+      portal.answer(Volume);
+      Serial.println(Volume);
+    }
 }
 
 void setup() {
@@ -77,6 +83,7 @@ WiFi.softAP("Korshun_16w","12345678"); // password cannot be shorter than 8 char
 
 
   portal.attachBuild(build);
+  portal.attach(action);
   portal.start();
 }
 
