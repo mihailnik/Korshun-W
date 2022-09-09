@@ -28,7 +28,6 @@ extern Scheduler ts;
 
 // Periodic task that runs every 5 sec and calls sensor publishing method
 Task tDisplayUpdater(5 * TASK_SECOND, TASK_FOREVER, &sensorPublisher, &ts, true );
-
 /**
  * переопределяем метод из фреймворка, регистрирующий необходимы нам в проекте переменные и методы обработки
  * 

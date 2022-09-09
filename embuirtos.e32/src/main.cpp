@@ -1,5 +1,6 @@
 
 // Main headers
+#include "arduino.h"
 #include "main.h"
 #include "EmbUI.h"
 #include "uistrings.h"   // non-localized text-strings
@@ -8,7 +9,6 @@
  * построение интерфейса осуществляется в файлах 'interface.*'
  *
  */
-
 // MAIN Setup
 void setup() {
   Serial.begin(BAUD_RATE);
