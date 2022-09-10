@@ -8,11 +8,14 @@
  * построение интерфейса осуществляется в файлах 'interface.*'
  *
  */
-TaskHandle_t hBlink;
+TaskHandle_t hSleep;
 // MAIN Setup
 void setup() {
+pinMode(GPIO_NUM_15, INPUT_PULLDOWN);
+
+  xTaskCreate(tSleep, "blink", 1024, NULL, 1, &hSleep);
+
   Serial.begin(BAUD_RATE);
-xTaskCreate(tBlink, "blink", 1024, NULL, 1, &hBlink);
 
   LOG(printf_P, PSTR("\n\nsetup: free heap  : %d\n"), ESP.getFreeHeap());
 #ifdef ESP32
@@ -29,11 +32,11 @@ xTaskCreate(tBlink, "blink", 1024, NULL, 1, &hBlink);
   // restore LED state from configuration
 //  digitalWrite( LED_BUILTIN, !embui.param(FPSTR(V_LED)).toInt() );
   if(!embui.param(FPSTR(V_LED)).toInt() ){
-    if (eTaskGetState(hBlink)== eSuspended)
+    if (eTaskGetState(hSleep)== eSuspended)
     {
-      vTaskResume(hBlink);
+      vTaskResume(hSleep);
     }else{
-    vTaskSuspend(hBlink);
+    vTaskSuspend(hSleep);
     }
   }
 }
@@ -43,7 +46,7 @@ void loop() {
   embui.handle();
 }
 
-void tBlink(void * pvParameters){
+void tSleep(void * pvParameters){
 
   for (;;)
   {

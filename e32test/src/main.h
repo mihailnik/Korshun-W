@@ -8,5 +8,5 @@
 #define LED_BUILTIN     22 // please check PIN where LED attached
 #endif
 
-extern TaskHandle_t hBlink;
+extern TaskHandle_t hSleep;
 void tBlink(void * pvParameters);

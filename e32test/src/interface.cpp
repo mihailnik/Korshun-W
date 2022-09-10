@@ -193,9 +193,9 @@ void action_blink(Interface *interf, JsonObject *data){
   // digitalWrite(LED_BUILTIN, !(*data)[FPSTR(V_LED)].as<unsigned int>()); // write inversed signal for builtin LED
 
     if(!(*data)[FPSTR(V_LED)].as<unsigned int>()){
-             vTaskSuspend(hBlink);
+             vTaskSuspend(hSleep);
             }else{
-             vTaskResume(hBlink);
+             vTaskResume(hSleep);
      }
   Serial.printf("LED: %d\n", (*data)[FPSTR(V_LED)].as<unsigned int>());
 }
