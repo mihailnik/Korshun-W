@@ -1,0 +1,68 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "d:/gh/Korshun-W/e82fr/include",
+                "d:/gh/Korshun-W/e82fr/src",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/extra_include",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/driver_lib/include",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/espressif",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/lwip",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/lwip/ipv4",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/lwip/ipv6",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/nopoll",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/spiffs",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/ssl",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/json",
+                "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/openssl",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "d:/gh/Korshun-W/e82fr/include",
+                    "d:/gh/Korshun-W/e82fr/src",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/extra_include",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/driver_lib/include",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/espressif",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/lwip",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/lwip/ipv4",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/lwip/ipv6",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/nopoll",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/spiffs",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/ssl",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/json",
+                    "C:/Users/Laser/.platformio/packages/framework-esp8266-rtos-sdk/include/openssl",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60104",
+                "ESP8266",
+                "ARDUINO_ARCH_ESP8266",
+                "ARDUINO_ESP8266_NODEMCU_ESP12E",
+                "F_CPU=80000000L",
+                "__ets__",
+                "ICACHE_FLASH",
+                ""
+            ],
+            "cStandard": "c99",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/Users/Laser/.platformio/packages/toolchain-xtensa@1.40802.0/bin/xtensa-lx106-elf-gcc.exe",
+            "compilerArgs": [
+                "-mlongcalls",
+                "-mtext-section-literals",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
