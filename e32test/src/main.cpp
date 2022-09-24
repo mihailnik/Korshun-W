@@ -3,17 +3,58 @@
 #include "EmbUI.h"
 #include "uistrings.h"   // non-localized text-strings
 #include "main.h"
+#include "Fsm.h"
+
+// fsm 
+#define FLIP_LIGHT_SWITCH 1
+
+State state_light_on(on_light_on_enter, NULL, &on_light_on_exit);
+State state_light_off(on_light_off_enter, NULL, &on_light_off_exit);
+Fsm fsm(&state_light_off);
+
+// Transition callback functions
+void on_light_on_enter()
+{
+  Serial.println("Entering LIGHT_ON");
+}
+
+void on_light_on_exit()
+{
+  Serial.println("Exiting LIGHT_ON");
+}
+
+void on_light_off_enter()
+{
+  Serial.println("Entering LIGHT_OFF");
+}
+
+void on_light_off_exit()
+{
+  Serial.println("Exiting LIGHT_OFF");
+}
+
+void on_trans_light_on_light_off()
+{
+  Serial.println("Transitioning from LIGHT_ON to LIGHT_OFF");
+}
+
+void on_trans_light_off_light_on()
+{
+  Serial.println("Transitioning from LIGHT_OFF to LIGHT_ON");
+}
 
 /**
  * построение интерфейса осуществляется в файлах 'interface.*'
  *
  */
 TaskHandle_t hSleep;
+TaskHandle_t hTermostat;
 // MAIN Setup
 void setup() {
 pinMode(GPIO_NUM_15, INPUT_PULLDOWN);
 
-  xTaskCreate(tSleep, "blink", 1024, NULL, 1, &hSleep);
+  xTaskCreate(tSleep, "sleep", 1024, NULL, 1, &hSleep);
+  xTaskCreate(tTermo, "termo", 1024, NULL, 1, &hTermostat);
 
   Serial.begin(BAUD_RATE);
 
@@ -39,6 +80,14 @@ pinMode(GPIO_NUM_15, INPUT_PULLDOWN);
     vTaskSuspend(hSleep);
     }
   }
+
+  // fsm transition ini
+    fsm.add_transition(&state_light_on, &state_light_off,
+                     FLIP_LIGHT_SWITCH,
+                     &on_trans_light_on_light_off);
+    fsm.add_transition(&state_light_off, &state_light_on,
+                     FLIP_LIGHT_SWITCH,
+                     &on_trans_light_off_light_on);
 }
 
 // MAIN loop
@@ -54,5 +103,18 @@ void tSleep(void * pvParameters){
   vTaskDelay(500 / portTICK_PERIOD_MS);
   digitalWrite( LED_BUILTIN, LOW );
   vTaskDelay(500 / portTICK_PERIOD_MS);
+  }
+}
+
+void tTermo(void * pvParameters){
+
+  for (;;)
+  {
+  vTaskDelay(100 / portTICK_PERIOD_MS);
+  digitalWrite( LED_BUILTIN, HIGH );
+  // fsm.trigger(FLIP_LIGHT_SWITCH);
+  vTaskDelay(100 / portTICK_PERIOD_MS);
+  digitalWrite( LED_BUILTIN, LOW );
+  // fsm.trigger(FLIP_LIGHT_SWITCH);
   }
 }

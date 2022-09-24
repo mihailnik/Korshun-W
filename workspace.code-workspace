@@ -3,6 +3,10 @@
 		{
 			"name": "e32test",
 			"path": "e32test"
+		},
+		{
+			"name": "fsm2560",
+			"path": "fsm2560"
 		}
 	],
 	"settings": {
