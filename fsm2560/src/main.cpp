@@ -3,11 +3,18 @@
 #include "Fsm.h"
 #include "Termostat.h"
 #include "blink.h"
+#include "blink.h"
+#include <Arduino_FreeRTOS.h>
+#include "task.h"
+#include "queue.h"
+
+TaskHandle_t hSleep;
 
 // standard arduino functions
 void setup()
 {
   Serial.begin(9600);
+  xTaskCreate(tSleep, "sleep", 1024, NULL, 1, &hSleep);
 
   Termostat_setup();
   blink_setup();
@@ -46,3 +53,13 @@ void loop()
   delay(500);
 }
 
+void tSleep(void * pvParameters){
+
+  for (;;)
+  {
+  digitalWrite( LED_BUILTIN, HIGH );
+  vTaskDelay(500);
+  digitalWrite( LED_BUILTIN, LOW );
+  vTaskDelay(1000 / portTICK_PERIOD_MS);
+  }
+}
