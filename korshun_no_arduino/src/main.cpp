@@ -75,7 +75,7 @@ Changes from V4.0.5
 
 */
 
-#include <stdlib.h>
+#include <util/stdlib.h>
 #include <string.h>
 
 #ifdef GCC_MEGA_AVR
