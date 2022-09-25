@@ -7,11 +7,16 @@
 		{
 			"name": "fsm2560",
 			"path": "fsm2560"
+		},
+		{
+			"name": "korshun_no_arduino",
+			"path": "korshun_no_arduino"
 		}
 	],
 	"settings": {
 		"files.associations": {
-			"string": "cpp"
+			"string": "cpp",
+			"freertos.h": "c"
 		}
 	}
 }
