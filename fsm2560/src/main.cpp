@@ -9,7 +9,7 @@
 #include "queue.h"
 
 TaskHandle_t hSleep;
-
+// перевірка
 // standard arduino functions
 void setup()
 {
