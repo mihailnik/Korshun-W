@@ -11,6 +11,10 @@
 		{
 			"name": "korshun_no_arduino",
 			"path": "korshun_no_arduino"
+		},
+		{
+			"name": "Laser_Wemos",
+			"path": "Laser_Wemos"
 		}
 	],
 	"settings": {
