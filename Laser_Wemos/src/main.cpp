@@ -1,12 +1,16 @@
 #include <Arduino.h>
 
+#include <GyverPortal.h>
 // почти все компоненты
 
-#define AP_SSID ""
-#define AP_PASS ""
+// #define AP_SSID "Vodafone-6459"
+// #define AP_PASS "Ha3EDRgA74AT6F6R"
 
-#include <GyverPortal.h>
+#define AP_SSID "Laser-bird"
+#define AP_PASS "DD123456abc"
+IPAddress local_IP(192, 168, 4, 25);
 GyverPortal ui;
+
 
 void action();
 
@@ -72,12 +76,19 @@ void build() {
 
 void setup() {
   Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(AP_SSID, AP_PASS);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
+// wifi_ap mode
+  WiFi.mode(WIFI_AP);
+  WiFi.softAP(AP_SSID, AP_PASS);
+
+// wifi_sta mode
+  // WiFi.mode(WIFI_STA);
+  // WiFi.begin(AP_SSID, AP_PASS);
+  // while (WiFi.status() != WL_CONNECTED) {
+  //   delay(500);
+  //   Serial.print(".");
+  // }
+
+
   Serial.println(WiFi.localIP());
 
   // подключаем конструктор и запускаем

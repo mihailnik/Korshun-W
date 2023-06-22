@@ -15,6 +15,10 @@
 		{
 			"name": "Laser_Wemos",
 			"path": "Laser_Wemos"
+		},
+		{
+			"name": "esp12",
+			"path": "esp12"
 		}
 	],
 	"settings": {
