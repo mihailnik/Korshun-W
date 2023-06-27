@@ -19,6 +19,10 @@
 		{
 			"name": "esp12",
 			"path": "esp12"
+		},
+		{
+			"name": "GyverHub8266",
+			"path": "../GyverHub8266"
 		}
 	],
 	"settings": {
