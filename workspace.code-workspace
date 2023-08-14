@@ -13,14 +13,6 @@
 			"path": "korshun_no_arduino"
 		},
 		{
-			"name": "Laser_Wemos",
-			"path": "Laser_Wemos"
-		},
-		{
-			"name": "esp12",
-			"path": "esp12"
-		},
-		{
 			"name": "GyverHub8266",
 			"path": "../GyverHub8266"
 		}
