@@ -13,8 +13,8 @@
 			"path": "korshun_no_arduino"
 		},
 		{
-			"name": "GyverHub8266",
-			"path": "../GyverHub8266"
+			"name": "e8266_portal",
+			"path": "e8266_portal"
 		}
 	],
 	"settings": {
