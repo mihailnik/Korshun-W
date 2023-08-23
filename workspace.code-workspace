@@ -15,6 +15,10 @@
 		{
 			"name": "e8266_portal",
 			"path": "e8266_portal"
+		},
+		{
+			"name": "ESPUI_8266",
+			"path": "ESPUI_8266"
 		}
 	],
 	"settings": {
