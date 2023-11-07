@@ -19,6 +19,14 @@
 		{
 			"name": "ESPUI_8266",
 			"path": "ESPUI_8266"
+		},
+		{
+			"name": "korshun",
+			"path": "korshun"
+		},
+		{
+			"name": "e8266_GyHUB",
+			"path": "e8266_GyHUB"
 		}
 	],
 	"settings": {
